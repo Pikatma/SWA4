@@ -17,9 +17,9 @@ public class CXFBackendServer {
 	private static final int BACKEND_PORT = 9000;
 
 	private final static String URL = "http://localhost:9000/";
-	
-    private static final Logger LOG = Logger.getLogger(CXFBackendServer.class.getName());
 
+	private static final Logger LOG = Logger.getLogger(CXFBackendServer.class
+			.getName());
 
 	public static void main(String[] args) throws Exception {
 		Server httpServer;
@@ -35,25 +35,26 @@ public class CXFBackendServer {
 					ServletContextHandler.NO_SESSIONS);
 			context.setContextPath("/");
 			httpServer.setHandler(context);
-			
-//			This servlet is only necessary if jax-rs resources are published otherwise the CXFNonSpringServlet can be used. 
+
+			// This servlet is only necessary if jax-rs resources are published
+			// otherwise the CXFNonSpringServlet can be used.
 			ServletHolder cxfServlet = context.addServlet(
 					CXFNonSpringJaxrsServlet.class, "/*");
-//			ServletHolder cxfServlet = context.addServlet(
-//			CXFNonSpringServlet.class, "/*");
-		
+			// ServletHolder cxfServlet = context.addServlet(
+			// CXFNonSpringServlet.class, "/*");
+
 			cxfServlet.setInitOrder(1);
-//			tell the jax-rs servlet which services exist
+			// tell the jax-rs servlet which services exist
 			cxfServlet.setInitParameter("jaxrs.serviceClasses",
-					"swa.ass4.server.DummyRestResource");
+					"swa.ass4.server.UserManagementModule");
 
 			httpServer.start();
-			
-//			publish a simple jax-ws service  			
+
+			// publish a simple jax-ws service
 			Greeter impl = new GreeterImpl();
 			Endpoint.publish("/Greeter", impl);
 
-		  LOG.info("Server URI: " + URL);
+			LOG.info("Server URI: " + URL);
 
 		} catch (Exception e) {
 			e.printStackTrace();

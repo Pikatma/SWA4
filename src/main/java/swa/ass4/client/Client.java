@@ -1,7 +1,16 @@
 package swa.ass4.client;
 
-public class Client {
-	public static void main(String args[]) throws Exception {
-		// who wants to implement me?
+import javafx.application.Application;
+import swa.ass4.client.gui.LoginScreen;
+
+public final class Client {
+
+	private Client() {
 	}
+
+	public static void main(String args[]) throws Exception {
+		Application.launch(LoginScreen.class, args);
+
+	}
+
 }
