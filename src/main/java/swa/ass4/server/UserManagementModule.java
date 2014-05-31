@@ -12,7 +12,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import swa.ass4.client.gui.Users;
 
@@ -29,35 +28,35 @@ public class UserManagementModule {
 		first.setName("Anna");
 		first.setPassword("first");
 		first.setEmail("anna@unet.univie.ac.at");
-		first.setRole(1);
+		first.setRole("Admin");
 
 		UserImpl second = new UserImpl();
 		second.setUsername("bernhard");
 		second.setName("Bernhard");
 		second.setPassword("second");
 		second.setEmail("bernhard@unet.univie.ac.at");
-		second.setRole(2);
+		second.setRole("Teacher");
 
 		UserImpl third = new UserImpl();
 		third.setUsername("carl");
 		third.setName("Carl");
 		third.setPassword("third");
 		third.setEmail("carl@unet.univie.ac.at");
-		third.setRole(3);
+		third.setRole("Student");
 
 		UserImpl forth = new UserImpl();
 		forth.setUsername("david");
 		forth.setName("David");
 		forth.setPassword("forth");
 		forth.setEmail("david@unet.univie.ac.at");
-		forth.setRole(2);
+		forth.setRole("Teacher");
 
 		UserImpl fifth = new UserImpl();
 		fifth.setUsername("eva");
 		fifth.setName("Eva");
 		fifth.setPassword("fifth");
 		fifth.setEmail("eva@unet.univie.ac.at");
-		fifth.setRole(1);
+		fifth.setRole("Admin");
 
 		map.put(first.getUsername(), first);
 		map.put(second.getUsername(), second);
@@ -90,26 +89,12 @@ public class UserManagementModule {
 
 	String name;
 
-	// @GET
-	// @Path("user")
-	// @Produces(MediaType.TEXT_PLAIN)
-	// public String getUser() throws Exception
-	// {
-	// UserImpl user = new UserImpl();
-	// user.setId(10);
-	// user.setFirstName("Pi");
-	// user.setLastName("Ka");
-	// return user.getLastName();
-	// }
 
 	@GET
 	@Path("user/{username}")
 	@Produces("application/xml")
 	public Response getUserById(@PathParam("username") String username) {
 		UserImpl user = new UserImpl();
-		// user.setId(id);
-		// user.setFirstName("Lokesh");
-		// user.setLastName("Gupta");
 		user = map.get(username);
 		return Response.status(200).entity(user).build();
 	}
@@ -118,25 +103,8 @@ public class UserManagementModule {
 	@Path("user/all")
 	@Produces("application/xml")
 	public Users getAllUsers() {
-//		ResponseList user = new ResponseList();
-//		user.setList(list);
-		
+	
 		return list;
 	}
 	
 }
-
-//@XmlRootElement(name = "responseList")
-//class ResponseList {
-//
-//    private Users user;
-//
-//    public Users getList() {
-//        return user;
-//    }
-//
-//    public void setList(Users user) {
-//        this.user = user;
-//    }
-
-//}

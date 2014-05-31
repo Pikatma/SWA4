@@ -40,13 +40,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -94,7 +92,7 @@ public class LoginController {
 			if (user.getUsername().equals(usernameField.getText())) {
 				if (user.getPassword().equals(passwordField.getText())) {
 					actiontarget.setText("Password correct");
-					UserTable.launch();
+//					UserTable.launch();
 				} else
 					actiontarget.setText("Password invalid");
 	

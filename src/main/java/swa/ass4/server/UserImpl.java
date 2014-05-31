@@ -11,11 +11,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "user")
 public class UserImpl implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
 
 	@XmlAttribute(name = "username")
 	private String username;
+	
 
 	@XmlElement(name = "name")
 	private String name;
@@ -27,7 +28,7 @@ public class UserImpl implements Serializable {
 	private String email;
 
 	@XmlElement(name = "role")
-	private Integer role;
+	private String role;
 
 	public String getUsername() {
 		return username;
@@ -61,11 +62,11 @@ public class UserImpl implements Serializable {
 		this.email = email;
 	}
 
-	public Integer getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Integer role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 }

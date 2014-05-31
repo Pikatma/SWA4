@@ -20,7 +20,7 @@ public interface User {
 
 	public void setEmail(String email);
 
-	public Integer getRole();
+	public String getRole();
 
-	public void setRole(Integer role);
+	public void setRole(String role);
 }
